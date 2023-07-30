@@ -1,5 +1,5 @@
 import streamlit as st
-from src.repository.movies import get_movies, like_movie
+from src.repository.movies import MoviesRepositoryFactory
 # from config import db_type
 
 # yield will return a generator object that can be iterated over using a for loop.
@@ -13,13 +13,14 @@ def tab_movies():
     st.radio("Escolha o banco de dados", ("supabase", "sqlite"), index=0, key="db_type")
 
     # fetch movies from database
-    data = get_movies()
+    factory = MoviesRepositoryFactory.create()
+    data = factory.get_movies()
 
-    num_movies_per_column = 3 if len(data) >= 3 else 1
-
-    if len(data) < num_movies_per_column:
-        st.warning("Número insuficiente de filmes para criar as colunas.")
+    if len(data) == 0:
+        st.warning("Não há filmes cadastrados")
         return
+    
+    num_movies_per_column = 3 if len(data) >= 3 else 1
 
     # Usando list comprehension para criar as colunas
     columns = st.columns(num_movies_per_column, gap="small")
@@ -36,7 +37,7 @@ def tab_movies():
         
                     st.button("Curtir", 
                         key=movie.id, 
-                        on_click=lambda movie=movie: like_movie(movie), 
+                        on_click=lambda movie=movie: factory.like_movie(movie), 
                         type="primary",
                     )         
 
@@ -51,7 +52,7 @@ def main():
     with tab2:
         st.title("Sobre")
         st.markdown("Este é um projeto de exemplo para demonstrar como usar o Streamlit e o Supabase.")
-        st.markdown("Para mais informações, acesse o [repositório do projeto]().")
+        st.markdown("Para mais informações, acesse o [repositório do projeto](https://github.com/fabricioifc/DesenvWeb).")
         st.markdown("Para mais informações sobre o Streamlit, acesse o [site oficial](https://streamlit.io/).")
         st.markdown("Para mais informações sobre o Supabase, acesse o [site oficial](https://supabase.io/).")
 
