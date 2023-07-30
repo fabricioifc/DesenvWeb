@@ -56,8 +56,6 @@ class SqliteMoviesRepository(MoviesRepository):
         db.close()
         return True
 
-
-
 # def get_movies():
 #     db_type = st.session_state.db_type
 
