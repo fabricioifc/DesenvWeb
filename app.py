@@ -1,5 +1,5 @@
 import streamlit as st
-from repository.movies import get_movies, like_movie
+from src.repository.movies import get_movies, like_movie
 # from config import db_type
 
 # yield will return a generator object that can be iterated over using a for loop.

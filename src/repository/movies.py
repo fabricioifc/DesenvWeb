@@ -1,8 +1,7 @@
 import streamlit as st
-from model.movie import Movie
+from src.model.movie import Movie
 # from config import db_type
-from db.database_manager import supabase_client, sqlite_client
-
+from src.db.database_manager import supabase_client, sqlite_client
 
 def get_movies():
     db_type = st.session_state.db_type
