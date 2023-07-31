@@ -10,9 +10,9 @@ pip install -r requirements.txt
 cp .streamlit/secrets.toml.sample .streamlit/secrets.toml
 ```
 
-### 3. Como criar o banco de dados
+### 3. Criar o banco de dados
 ```bash
-Abrir o arquivo src/util/sql.sql e executar os comandos no banco de dados
+python setup/create_db.py setup/seed.sql
 ```
 
 ### 4. Rodar o projeto

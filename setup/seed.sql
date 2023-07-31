@@ -1,11 +1,11 @@
 -- SQLite
-create table movies (
-id integer primary key autoincrement,
-name text,
-sinopse text,
-image text,
-video text,
-likes integer
+create table if not exists movies (
+    id integer primary key autoincrement,
+    name text,
+    sinopse text,
+    image text,
+    video text,
+    likes integer
 );
 
 -- SQLite
