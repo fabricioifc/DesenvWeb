@@ -23,3 +23,8 @@ streamlit run app.py
 ```bash
 http://localhost:8501
 ```
+
+### 6. Acessar o projeto em produção
+```
+https://desenvolvimento-web.streamlit.app/
+```

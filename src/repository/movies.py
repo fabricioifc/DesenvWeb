@@ -27,6 +27,7 @@ class MoviesRepository(ABC):
 class SupabaseMoviesRepository(MoviesRepository):
     def get_movies(self):
         db = supabase_client()
+        # SELECT * FROM movies order by id
         data = db.table("movies").select("*").order("id").execute()
         movies = []
         for movie in data.data:
